@@ -88,6 +88,8 @@
     }
     .card {
       background: white;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
       border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -132,7 +134,16 @@
       transition: background 0.2s;
     }
     .contact button:hover { background: #0284c7; }
-
+    #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: none;
+    }
     footer {
       background: #0f172a;
       color: #94a3b8;
@@ -148,21 +159,22 @@
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#team">Our Team</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
     <h2>AI Consulting for Small Businesses</h2>
-    <p>We are a team of students helping small businesses harness the power of artificial intelligence to streamline workflows, reduce costs, and unlock new opportunities.</p>
+    <p>We are a team of student consultants helping small businesses harness the power of artificial intelligence to streamline workflows, reduce costs, and unlock new opportunities.</p>
     <a href="#contact" class="btn">Get in Touch</a>
   </section>
 
   <section id="about">
     <h3>About Us</h3>
     <p style="max-width: 750px; margin: auto; text-align: center;">
-      At BDA, we believe AI should be accessible to everyone, not just large corporations. 
-      Our student-led team brings fresh perspectives and knowledge to help 
+      At BDA, we believe AI should be accessible to everyone — not just large corporations. 
+      Our student-led team brings fresh perspectives and cutting-edge knowledge to help 
       small businesses adopt AI solutions tailored to their unique challenges. 
     </p>
   </section>
@@ -180,23 +192,80 @@
       </div>
       <div class="card">
         <h4>Custom AI Solutions</h4>
-        <p>Whether it’s chatbots, recommendation systems, or predictive models, we build and help recommend tools designed around your business needs.</p>
+        <p>Whether it’s chatbots, recommendation systems, or predictive models, we build tools designed around your business needs.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <h3>Contact Us</h3>
-    <form>
-      <input type="text" placeholder="Name" required />
-      <input type="email" placeholder="Email" required />
-      <textarea rows="5" placeholder="How can we help you?" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <section id="team">
+    <h3>Meet Our Team</h3>
+    <div class="team">
+      <div class="card"><h4>Rob Johnson</h4><p>Data Scientist. Passionate about helping businesses adopt AI responsibly.</p></div>
+      <div class="card"><h4>Jamie Custard</h4><p>Founder. Focused on building scalable AI tools for small enterprises.</p></div>
+      <div class="card"><h4>Devin Barnett</h4><p>Research Lead. Specializes in analyzing workflows and designing AI-driven solutions.</p></div>
+    </div>
   </section>
+
+<section id="contact" class="contact">
+  <h3>Contact Us</h3>
+
+  <!-- Hidden iframe to catch Google Form submission -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <form id="contact-form" 
+        action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfdk4Y4L13932CjcglxgQZkRw8CH3H_9iSAeFBjdYemojlr2Q/formResponse" 
+        method="POST" target="hidden_iframe" onsubmit="showThankYou();">
+      <input type="text" name="entry.967116520" placeholder="Your Name" required />
+      <input type="email" name="entry.453785501" placeholder="Your Email" required />
+      <textarea name="entry.1151291285" rows="5" placeholder="How can we help you?" required></textarea>
+      <button type="submit">Send Message</button>
+  </form>
+
+  <div id="overlay"></div>
+  <div id="thank-you-popup" style="
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    z-index: 2000;
+  ">
+    <h4 style="margin-bottom: 1rem; color: #0f172a;">Thank you!</h4>
+    <p>Your message has been sent. We’ll get back to you soon.</p>
+    <button onclick="closePopup()" style="
+      margin-top: 1rem;
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    ">Close</button>
+  </div>
+
+  <script>
+    function showThankYou() {
+      setTimeout(() => {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('thank-you-popup').style.display = 'block';
+        document.getElementById('contact-form').reset();
+      }, 500);
+    }
+    function closePopup() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('thank-you-popup').style.display = 'none';
+    }
+  </script>
+</section>
 
   <footer>
     <p>&copy; 2025 BDA. All rights reserved.</p>
   </footer>
+  
 </body>
 </html>
