@@ -88,6 +88,9 @@
     }
     .card {
       background: white;
+      height: auto; 
+      min-height: 12.75rem;
+      max-height: 12.75rem;
       margin-bottom: 1rem;
       margin-top: 1rem;
       border-radius: 12px;
@@ -96,6 +99,7 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .card:hover {
+      text-decoration: none;
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
@@ -117,6 +121,7 @@
     }
     .contact input, .contact textarea {
       margin-bottom: 1rem;
+      font: inherit;
       padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -151,7 +156,49 @@
       padding: 2rem;
       font-size: 0.9rem;
     }
-  </style>
+    /* Team section styles */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 2rem;
+    }
+    .team-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      height: auto; 
+      min-height: 12.75rem;
+      max-height: 12.75rem;
+      box-sizing: border-box;
+    }
+    .team-card-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 1.25rem;
+    }
+    .team-img {
+      width: 6rem;
+      height: 6rem;
+      min-width: 6rem;
+      min-height: 6rem;
+      max-width: 6rem;
+      max-height: 6rem;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 .25rem .5rem rgba(0,0,0,0.07);
+      flex-shrink: 0;
+      background: #e5e7eb;
+      display: block;
+    }
+    .team-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+      transform: translateY(-5px);
+    }
+    </style>
 </head>
 <body>
   <header>
@@ -173,8 +220,8 @@
   <section id="about">
     <h3>About Us</h3>
     <p style="max-width: 750px; margin: auto; text-align: center;">
-      At BDA, we believe AI should be accessible to everyone. 
-      Our team brings fresh perspectives and cutting-edge knowledge to help 
+      At BDA, we believe AI should be accessible to everyone — not just large corporations. 
+      Our student-led team brings fresh perspectives and cutting-edge knowledge to help 
       small businesses adopt AI solutions tailored to their unique challenges. 
     </p>
   </section>
@@ -200,9 +247,33 @@
   <section id="team">
     <h3>Meet Our Team</h3>
     <div class="team">
-      <div class="card"><h4>Spencer McGillicutty</h4><p>Data Scientist. Passionate about helping businesses adopt AI responsibly.</p></div>
-      <div class="card"><h4>Colonel Mustard</h4><p>Founder. Focused on building scalable AI tools for small enterprises.</p></div>
-      <div class="card"><h4>Devin Barnett</h4><p>Research Lead. Specializes in analyzing workflows and designing AI-driven solutions.</p></div>
+      <a class="card team-card" href="https://www.linkedin.com/in/placeholder" target="_blank">
+        <div class="team-card-content">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Rob Johnson" class="team-img" />
+          <div>
+            <h4>Rob Johnson</h4>
+            <p>Data Scientist. Passionate about helping businesses adopt AI responsibly.</p>
+          </div>
+        </div>
+      </a>
+      <a class="card team-card" href="https://www.linkedin.com/in/placeholder" target="_blank">
+        <div class="team-card-content">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Jamie Custard" class="team-img" />
+          <div>
+            <h4>Jamie Custard</h4>
+            <p>Founder. Focused on building scalable AI tools for small enterprises.</p>
+          </div>
+        </div>
+      </a>
+      <a class="card team-card" href="https://www.linkedin.com/in/devin-barnett-2098102a1/" target="_blank">
+        <div class="team-card-content">
+          <img src="https://media.licdn.com/dms/image/v2/D5603AQHjmwZ03sHz5g/profile-displayphoto-shrink_400_400/B56ZWgkWNMGoAg-/0/1742155637931?e=1758153600&v=beta&t=NJE5T4W0K9zCFkb1VwduNHre_lrWaUrIX5Kk6z5dh4o" alt="Devin Barnett" class="team-img" />
+          <div>
+            <h4>Devin Barnett</h4>
+            <p>Research Lead. Specializes in analyzing workflows and designing AI-driven solutions.</p>
+          </div>
+        </div>
+      </a>
     </div>
   </section>
 
